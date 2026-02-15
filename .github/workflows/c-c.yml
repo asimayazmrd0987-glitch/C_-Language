@@ -1,31 +1,32 @@
-name: C Build and Test
+name: C Build and Check
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Get your code
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    # 2. Install C compiler
-    - name: Install GCC
-      run: sudo apt-get update && sudo apt-get install -y gcc
+    - name: List C files
+      run: find . -type f -name "*.c"
 
-    # 3. Compile your C code
-    - name: Build
-      run: gcc -o myprogram *.c -Wall -Wextra
+    - name: Build (compile check)
+      shell: bash
+      run: |
+        if ! find . -type f -name "*.c" | grep -q .; then
+          echo "No C files found."
+          exit 1
+        fi
 
-    # 4. Run your program (if it has main)
-    - name: Run
-      run: ./myprogram
-
-    # 5. Run tests (if you have test file)
-    # - name: Test
-    #   run: ./myprogram test
+        while IFS= read -r -d '' file; do
+          echo "Compiling: $file"
+          gcc -Wall -Wextra -fsyntax-only "$file"
+        done < <(find . -type f -name "*.c" -print0)
