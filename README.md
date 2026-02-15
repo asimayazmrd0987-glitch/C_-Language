@@ -1,2 +1,2 @@
-# C_-Language
-All my C language practice
+# C_-Lang
+Practicing C language 
