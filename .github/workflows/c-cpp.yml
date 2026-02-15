@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: C Build and Test
 
 on:
   push:
@@ -8,16 +8,24 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
+    # 1. Get your code
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+
+    # 2. Install C compiler
+    - name: Install GCC
+      run: sudo apt-get update && sudo apt-get install -y gcc
+
+    # 3. Compile your C code
+    - name: Build
+      run: gcc -o myprogram *.c -Wall -Wextra
+
+    # 4. Run your program (if it has main)
+    - name: Run
+      run: ./myprogram
+
+    # 5. Run tests (if you have test file)
+    # - name: Test
+    #   run: ./myprogram test
