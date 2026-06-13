@@ -9,7 +9,7 @@ int count(int a[],int n){
 		return noofpositive;
 }
 int main(){
-	int a[1]={1,2,-3,-4,-5,6,-7,-8,9,10};
-	printf("The number are %d",count(a,9));
+	int a[10]={1,2,-3,-4,-5,6,-7,-8,9,10};
+	printf("The number are %d",count(a,10));
 	return 0;
 }
