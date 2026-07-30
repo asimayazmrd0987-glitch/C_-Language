@@ -1,0 +1,51 @@
+name: C/C++ Build and Check
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc g++ make
+
+    - name: List source files
+      run: |
+        echo "=== C files ==="
+        find . -type f -name "*.c"
+        echo "=== C++ files ==="
+        find . -type f -name "*.cpp"
+
+    - name: Build (compile check)
+      shell: bash
+      run: |
+        c_files=$(find . -type f -name "*.c")
+        cpp_files=$(find . -type f -name "*.cpp")
+
+        if [ -z "$c_files" ] && [ -z "$cpp_files" ]; then
+          echo "No C or C++ files found."
+          exit 1
+        fi
+
+        # Compile C files
+        while IFS= read -r -d '' file; do
+          echo "Checking C syntax: $file"
+          gcc -Wall -Wextra -fsyntax-only "$file"
+        done < <(find . -type f -name "*.c" -print0)
+
+        # Compile C++ files  
+        while IFS= read -r -d '' file; do
+          echo "Checking C++ syntax: $file"
+          g++ -Wall -Wextra -fsyntax-only "$file"
+        done < <(find . -type f -name "*.cpp" -print0)
