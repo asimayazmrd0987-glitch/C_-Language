@@ -34,7 +34,6 @@ int main() {
         printf("Name: %s\nAddress: %s\n\n", friends[i].name, friends[i].address);
     }
 
-    // Print name and phone number
     printf("\n--- Name and Phone Number ---\n");
     for (i = 0; i < MAX; i++) {
         printf("Name: %s | Phone: %s\n", friends[i].name, friends[i].phone);
