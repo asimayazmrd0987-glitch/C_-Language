@@ -10,12 +10,10 @@ struct VideoTape {
 
 int main() {
 
-    // Defining and initializing 3 structure variables
     struct VideoTape t1 = {"Sherlock Homes", 180, 1500.0, 200.0, "04-05-2012"};
     struct VideoTape t2 = {"Mevlana Rumi", 148, 1200.0, 180.0, "16-07-2010"};
     struct VideoTape t3 = {"Dark", 136, 1000.0, 150.0, "31-03-1999"};
 
-    // Printing the data
     printf("----- Video Tape Inventory -----\n");
 
     printf("\nTape 1:\n");

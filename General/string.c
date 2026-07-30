@@ -12,7 +12,6 @@ int main() {
     fgets(str2, sizeof(str2), stdin);
 
     str1[strcspn(str1, "\n")] = '\0';
-    //str2[strcspn(str2, "\n")] = '\0';
 
     result = strcmp(str1, str2);
 

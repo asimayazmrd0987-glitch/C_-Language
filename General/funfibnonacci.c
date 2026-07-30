@@ -17,7 +17,6 @@ int fib(int n){
 	int fibN= fib(n-1);
   	int fibN2=fib(n-2);
 	int fibn=fibN+fibN2;
-	//printf("The fib of %d is %d\n",n,fibn);
 	return fibn;
 }
 

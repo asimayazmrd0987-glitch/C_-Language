@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int sum(int a,int b);//declaration
+int sum(int a,int b);
 
 int main()
 {
@@ -8,11 +8,11 @@ int main()
 	printf("Enter a and b: ");
 	scanf("%d%d",&a,&b);
 	
-	int s = sum(a,b);//body
+	int s = sum(a,b);
 	printf("The number is : %d", s);
 	return 0;
 }
-int sum(int x,int y)//definition
+int sum(int x,int y)
 { 
-return x/y;}	//Division
+return x/y;}	
 
