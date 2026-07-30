@@ -4,13 +4,12 @@
 #include <ctype.h>
 #define PASSWORD "king1234"
 #define PASS_LEN 8
-// struct for student data
 struct student
 {
   char name[30];
   char reg[15];
   int marks[7];
-  // int total_marks;
+  // int total_marks for the nerds
   double cgpa_all[7];
   double total_gpa;
 };
@@ -36,7 +35,7 @@ int get_valid_int(const char *prompt, int min, int max);
 struct student *s = NULL;
 int count = 0;
 size_t max_student = 0;
-// function for adding and deleting data of the students
+// function for adding and deleting data of the shit students
 
 void admin()
 {
@@ -114,7 +113,7 @@ void update_student(void)
       // Update registration
       get_valid_reg(s[i].reg, sizeof(s[i].reg));
 
-      // Update marks
+      // here is Updating marks
       size_t j;
       for (j = 0; j < sizeof(s[i].marks) / sizeof(s[i].marks[0]); j++)
       {
