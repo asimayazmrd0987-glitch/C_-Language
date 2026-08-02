@@ -1,4 +1,4 @@
-# C Language Code Repository - Documentation
+![](https://capsule-render.vercel.app/api?type=waving&color=0:1C1C1C,100:FF4500&height=120&section=header&text=C%20Language%20For%20Everyone&fontSize=36&fontColor=ffffff&animation=fadeIn)
 
 ## Repository Overview
 
